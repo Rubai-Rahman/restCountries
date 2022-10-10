@@ -11,10 +11,10 @@ const CountryDetails = () => {
       .then((data) => setCyDetails(data))
   }, [countryCapital])
 
-  const borderCountry = cyDetails[0]?.borders
+
 
   return (
-    <div className="ml-7 sm:grid sm:grid-cols-2 sm:p-8 sm:my-auto">
+    <div className="ml-7 lg:grid lg:grid-cols-2 lg:p-8 md:my-auto">
       <div>
         <Link to="/">
           <button className="flex justify-center w-24 mb-10 rounded-md  font-thin text-sm align-middle bg-white py-2 shadow-md dark:bg-slate-700 text-black dark:text-white  ">
@@ -25,7 +25,7 @@ const CountryDetails = () => {
         </Link>
         <img src={cyDetails[0]?.flags?.png} alt="" />
       </div>
-      <div className="my-10 sm:flex sm:justify-around mt-28 ">
+      <div className="my-10 lg:flex lg:justify-around mt-28 ">
         <div>
           <h1 className="text-xl  font-bold mb-8  dark:text-white">
             {cyDetails[0]?.name?.common}

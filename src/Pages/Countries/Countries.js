@@ -8,7 +8,7 @@ const Countries = () => {
   //Reducer
   const {
     state: { searchQuery, regionQuery },
-    dispatch,
+    
   } = CountryState()
 
   //Reducer

@@ -4,8 +4,7 @@ import Countries from '../Countries/Countries';
 
 const Home = () => {
   return (
-    <div>
-      
+    <div>     
       <Utilities />
       <Countries/>
     </div>
