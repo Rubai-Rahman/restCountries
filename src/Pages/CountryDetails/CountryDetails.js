@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import { IoIosArrowRoundBack } from "react-icons/io"
+import { CountryState } from "../../Context/Context"
 const CountryDetails = () => {
   const { countryCapital } = useParams()
-  const [cyDetails, setCyDetails] = useState({})
+  const [cyDetails, setCyDetails] = useState({});
+  const {
+    state: { searchQuery, regionQuery },
+    dispatch,
+  } = CountryState();
+
   useEffect(() => {
     fetch(`https://restcountries.com/v3.1/capital/${countryCapital}
 `)
@@ -11,13 +17,20 @@ const CountryDetails = () => {
       .then((data) => setCyDetails(data))
   }, [countryCapital])
 
-
+console.log(cyDetails[0]?.currencies)
 
   return (
     <div className="ml-7 lg:grid lg:grid-cols-2 lg:p-8 md:my-auto">
       <div>
         <Link to="/">
-          <button className="flex justify-center w-24 mb-10 rounded-md  font-thin text-sm align-middle bg-white py-2 shadow-md dark:bg-slate-700 text-black dark:text-white  ">
+          <button
+            onClick={() =>
+              dispatch({
+                type: "ClEAR-FILTER",
+              })
+            }
+            className="flex justify-center w-24 mb-10 rounded-md  font-thin text-sm align-middle bg-white py-2 shadow-md dark:bg-slate-700 text-black dark:text-white  "
+          >
             {" "}
             <IoIosArrowRoundBack className="mr-2  text-lg  " />
             Back{" "}
@@ -77,13 +90,12 @@ const CountryDetails = () => {
             </small>
           </h1>
           <h1 className="text-sm font-medium my-3 dark:text-white mb-8">
-            Languages:{" "}
+            Border: {cyDetails[0]?.borders.map((border) => <button className="m-3 p-2 bg-white rounded-md shadow-md dark:bg-slate-700 ">{border}</button>)}
             <small className="font-light text-sm  dark:text-slate-200">
               {" "}
               {}
             </small>
           </h1>
-          
         </div>
       </div>
     </div>
