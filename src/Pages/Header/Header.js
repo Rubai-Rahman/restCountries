@@ -3,9 +3,6 @@ import { BsMoonFill, BsSunFill } from "react-icons/bs"
 const Header = () => {
   const [theme, setTheme] = useState(" ")
 
-
-
-
   useEffect(() => {
     if (window.matchMedia("(prefers-color-scheme:dark)").matches) {
       setTheme("dark")
@@ -25,7 +22,7 @@ const Header = () => {
     setTheme(theme === "dark" ? "light" : "dark")
   }
   return (
-    <div className="bg-white h-20 shadow-2xl z-10 flex justify-between align items-center px-6  dark:bg-slate-700 mb-12 sm:px-10   ">
+    <div className="bg-white h-20 shadow-md z-10 flex justify-between align items-center px-6  dark:bg-slate-700 mb-12 sm:px-10   ">
       <div className="text-lg font-semibold dark:text-white sm:text-2xl">
         <h2>Where in the world?</h2>
       </div>
@@ -33,7 +30,7 @@ const Header = () => {
         {theme === "dark" ? (
           <button
             onClick={handleThemeSwitch}
-            className="flex justify-around items-center gap-x-2 dark:text-white "
+            className="flex justify-around items-center gap-x-2 dark:text-white   focus:outline-none  "
           >
             <BsSunFill className="font-light text-sm" />
             Light Mode

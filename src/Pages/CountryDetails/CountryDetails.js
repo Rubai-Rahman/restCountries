@@ -4,11 +4,11 @@ import { IoIosArrowRoundBack } from "react-icons/io"
 import { CountryState } from "../../Context/Context"
 const CountryDetails = () => {
   const { countryCapital } = useParams()
-  const [cyDetails, setCyDetails] = useState({});
+  const [cyDetails, setCyDetails] = useState({})
   const {
     state: { searchQuery, regionQuery },
     dispatch,
-  } = CountryState();
+  } = CountryState()
 
   useEffect(() => {
     fetch(`https://restcountries.com/v3.1/capital/${countryCapital}
@@ -16,8 +16,6 @@ const CountryDetails = () => {
       .then((res) => res.json())
       .then((data) => setCyDetails(data))
   }, [countryCapital])
-
-console.log(cyDetails[0]?.currencies)
 
   return (
     <div className="ml-7 lg:grid lg:grid-cols-2 lg:p-8 md:my-auto">
@@ -38,7 +36,7 @@ console.log(cyDetails[0]?.currencies)
         </Link>
         <img src={cyDetails[0]?.flags?.png} alt="" />
       </div>
-      <div className="my-10 lg:flex lg:justify-around mt-28 ">
+      <div className=" lg:flex lg:justify-around mt-28  ">
         <div>
           <h1 className="text-xl  font-bold mb-8  dark:text-white">
             {cyDetails[0]?.name?.common}
@@ -46,7 +44,11 @@ console.log(cyDetails[0]?.currencies)
           <h1 className="text-sm font-medium my-3 dark:text-white">
             Native Name:{" "}
             <small className="font-light text-sm  dark:text-slate-200">
-              {cyDetails[0]?.name?.nativeName?.nld?.common}{" "}
+              {
+                cyDetails[0]?.name?.nativeName[
+                  Object?.keys(cyDetails[0]?.name?.nativeName)[0]
+                ].common
+              }{" "}
             </small>
           </h1>
           <h1 className="text-sm font-medium my-3 dark:text-white">
@@ -75,28 +77,46 @@ console.log(cyDetails[0]?.currencies)
             </small>
           </h1>
         </div>
-        <div className="mt-16">
+        <div className="mt-12 ">
           <h1 className="text-sm font-medium my-3 dark:text-white">
             Top Level Domain:{" "}
             <small className="font-light text-sm  dark:text-slate-200">
-              {cyDetails[0]?.region}
+              {cyDetails[0]?.tld[0]}
             </small>{" "}
           </h1>
           <h1 className="text-sm font-medium my-3 dark:text-white">
             Currencies:{" "}
             <small className="font-light text-sm  dark:text-slate-200">
-              {" "}
-              {cyDetails[0]?.currencies?.name}
+              {
+                cyDetails[0]?.currencies[
+                  Object?.keys(cyDetails[0]?.currencies)[0]
+                ]?.name
+              }
             </small>
           </h1>
-          <h1 className="text-sm font-medium my-3 dark:text-white mb-8">
-            Border: {cyDetails[0]?.borders.map((border) => <button className="m-3 p-2 bg-white rounded-md shadow-md dark:bg-slate-700 ">{border}</button>)}
+          <h1 className="text-sm font-medium my-3 dark:text-white">
+            Languages:{" "}
             <small className="font-light text-sm  dark:text-slate-200">
-              {" "}
-              {}
+              {cyDetails[0]?.languages[Object.keys(cyDetails[0]?.languages)[0]]}
             </small>
           </h1>
         </div>
+      </div>
+      <div className="lg:col-start-2 lg:ml-20 ">
+        <h1 className="text-sm font-medium my-5 dark:text-white mb-8  ">
+          Border Countries:{" "}
+          <div className="my-2 grid grid-cols-3 gap-2 mr-3 pl-0 pr-6">
+            {cyDetails[0]?.borders ? (
+              cyDetails[0]?.borders.map((border) => (
+                <small className="text-center bg-white rounded-sm shadow-md font-light p-2   text-xsm dark:bg-slate-700 ">
+                  {border}
+                </small>
+              ))
+            ) : (
+              <p> Don't have Any Border Country </p>
+            )}
+          </div>
+        </h1>
       </div>
     </div>
   )
