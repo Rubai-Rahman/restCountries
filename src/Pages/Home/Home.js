@@ -4,9 +4,9 @@ import Countries from '../Countries/Countries';
 
 const Home = () => {
   return (
-    <div>     
+    <div className="container mx-auto">
       <Utilities />
-      <Countries/>
+      <Countries />
     </div>
   );
 };

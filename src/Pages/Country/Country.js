@@ -12,9 +12,9 @@ const Country = ({ country }) => {
   return (
     <div
       onClick={handleDetails}
-      className="   mb-20  border w-72 bg-white shadow-md rounded-md dark:bg-slate-700 border-none cursor-pointer    "
+      className="border w-full bg-white shadow-md rounded-md dark:bg-slate-700 border-none cursor-pointer"
     >
-      <img src={flags.png} alt="" className="w-72  h-48    " />
+      <img src={flags.png} alt="" className="w-full  h-48    " />
       <div className="m-12 ">
         <h4 className="text-xl font-medium dark:text-white">{name.common}</h4>
         <h5 className="text-sm font-medium  dark:text-white">
