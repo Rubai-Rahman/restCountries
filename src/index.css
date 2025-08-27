@@ -8,7 +8,7 @@
   box-shadow: none;
   scroll-behavior: smooth;
   overflow-x: hidden;
-  border-color: transparent
+  border-color: transparent;
 }
 * input:focus {
   outline: none;

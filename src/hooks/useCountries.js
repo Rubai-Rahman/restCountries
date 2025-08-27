@@ -9,7 +9,10 @@ const useCountries = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        setCountries(data);
+        const sortedCountry = data.sort((a, b) =>
+          a.name.common.localeCompare(b.name.common)
+        );
+        setCountries(sortedCountry);
       })
       .catch((err) => console.error('Failed to fetch countries:', err));
   }, []);

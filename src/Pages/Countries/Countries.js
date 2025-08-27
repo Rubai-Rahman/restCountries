@@ -28,7 +28,7 @@ const Countries = () => {
     return sortedCountry;
   };
   return (
-    <div className="w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-6">
+    <div className="w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-6 py-12">
       {transFormCountries().map((country) => (
         <Country key={country.name.common} country={country}></Country>
       ))}
