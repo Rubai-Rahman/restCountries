@@ -11,23 +11,37 @@ const Country = ({ country }) => {
   return (
     <div
       onClick={handleDetails}
-      className="border w-full bg-white shadow-md rounded-md dark:bg-slate-700 border-none cursor-pointer"
+      className="w-full bg-white dark:bg-blue-900 shadow-md rounded-md border-none cursor-pointer overflow-hidden transition-colors duration-200 hover:shadow-lg"
     >
-      <img src={flags.png} alt="" className="w-full  h-48    " />
-      <div className="m-12 ">
-        <h4 className="text-xl font-medium dark:text-white">{name.common}</h4>
-        <h5 className="text-sm font-medium  dark:text-white">
-          Population:{' '}
-          <small className="font-thin dark:text-slate-200"> {population}</small>
-        </h5>
-        <h5 className="text-sm font-medium  dark:text-white">
-          Region:{' '}
-          <small className="font-thin dark:text-slate-200"> {region}</small>
-        </h5>
-        <h5 className="text-sm font-medium  dark:text-white">
-          Capital:{' '}
-          <small className="font-thin dark:text-slate-200"> {capital}</small>
-        </h5>
+      <img 
+        src={flags.png} 
+        alt={`${name.common} flag`} 
+        className="w-full h-48 object-cover" 
+      />
+      <div className="p-6">
+        <h4 className="text-xl font-extrabold text-grey-950 dark:text-white mb-4">
+          {name.common}
+        </h4>
+        <div className="space-y-1 text-detail">
+          <p className="font-semibold text-grey-950 dark:text-white">
+            Population:{' '}
+            <span className="font-light text-grey-400 dark:text-grey-50">
+              {population?.toLocaleString() || 'N/A'}
+            </span>
+          </p>
+          <p className="font-semibold text-grey-950 dark:text-white">
+            Region:{' '}
+            <span className="font-light text-grey-400 dark:text-grey-50">
+              {region || 'N/A'}
+            </span>
+          </p>
+          <p className="font-semibold text-grey-950 dark:text-white">
+            Capital:{' '}
+            <span className="font-light text-grey-400 dark:text-grey-50">
+              {capital?.[0] || 'N/A'}
+            </span>
+          </p>
+        </div>
       </div>
     </div>
   );

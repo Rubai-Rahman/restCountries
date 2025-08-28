@@ -7,7 +7,7 @@ import CountryDetails from './Pages/CountryDetails/CountryDetails';
 
 function App() {
   return (
-    <div className="w-full h-full bg-gray-100 dark:bg-gray-800">
+    <div className="w-full h-full bg-grey-50 dark:bg-blue-950 ">
       <Router>
         <Header />
         <Routes>
