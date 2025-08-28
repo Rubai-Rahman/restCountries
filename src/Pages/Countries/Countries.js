@@ -5,7 +5,6 @@ import Country from '../Country/Country';
 
 const Countries = () => {
   const countries = useCountries();
-  console.log('countries', countries);
   //Reducer
   const {
     state: { searchQuery, regionQuery },

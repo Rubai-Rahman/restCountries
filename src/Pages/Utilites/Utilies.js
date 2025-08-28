@@ -11,7 +11,7 @@ const Utilities = () => {
   return (
     <div className="w-full flex flex-col sm:flex-row justify-between sm:items-center gap-4">
       {/* Search Box */}
-      <div className="flex items-center w-full sm:w-auto bg-white dark:bg-slate-700 rounded-md px-4 py-2">
+      <div className="flex items-center w-full sm:w-auto bg-white dark:bg-slate-700 rounded-md px-10 py-2 shadow-lg shadow-black">
         <BiSearchAlt2 className="text-gray-400 text-2xl mr-2" />
         <input
           type="text"
@@ -24,22 +24,24 @@ const Utilities = () => {
         />
       </div>
 
-      <select
-        value={regionQuery}
-        onChange={(e) =>
-          dispatch({ type: 'FILTER_BY_REGION', payload: e.target.value })
-        }
-        className="w-full sm:w-60 h-12 bg-white dark:bg-slate-700 rounded-md px-4 
-             text-slate-900 dark:text-white focus:outline-none appearance-none 
-             [text-align-last:left]"
-      >
-        <option value="">Filter by Region</option>
-        <option value="africa">Africa</option>
-        <option value="america">America</option>
-        <option value="asia">Asia</option>
-        <option value="europe">Europe</option>
-        <option value="oceania">Oceania</option>
-      </select>
+      <div className="">
+        <select
+          id="region"
+          autoComplete="off"
+          value={regionQuery}
+          onChange={(e) =>
+            dispatch({ type: 'FILTER_BY_REGION', payload: e.target.value })
+          }
+          className="sm:w-60 h-12 bg-white  dark:bg-slate-700 shadow-lg shadow-slate-900 border-none rounded-md px-4 text-slate-900 dark:text-white focus:outline-none !appearance-none "
+        >
+          <option value="">Filter by Region</option>
+          <option value="africa">Africa</option>
+          <option value="america">America</option>
+          <option value="asia">Asia</option>
+          <option value="europe">Europe</option>
+          <option value="oceania">Oceania</option>
+        </select>
+      </div>
     </div>
   );
 };

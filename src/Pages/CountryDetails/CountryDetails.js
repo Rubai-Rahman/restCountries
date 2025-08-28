@@ -1,21 +1,18 @@
-import React, { useEffect, useState } from "react"
-import { Link, useParams } from "react-router-dom"
-import { IoIosArrowRoundBack } from "react-icons/io"
-import { CountryState } from "../../Context/Context"
+import React, { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { IoIosArrowRoundBack } from 'react-icons/io';
+import { CountryState } from '../../Context/Context';
 const CountryDetails = () => {
-  const { countryCapital } = useParams()
-  const [cyDetails, setCyDetails] = useState({})
-  const {
-    state: { searchQuery, regionQuery },
-    dispatch,
-  } = CountryState()
+  const { countryCapital } = useParams();
+  const [cyDetails, setCyDetails] = useState({});
+  const { dispatch } = CountryState();
 
   useEffect(() => {
     fetch(`https://restcountries.com/v3.1/capital/${countryCapital}
 `)
       .then((res) => res.json())
-      .then((data) => setCyDetails(data))
-  }, [countryCapital])
+      .then((data) => setCyDetails(data));
+  }, [countryCapital]);
 
   return (
     <div className="ml-7 lg:grid lg:grid-cols-2 lg:p-8 md:my-auto">
@@ -24,14 +21,14 @@ const CountryDetails = () => {
           <button
             onClick={() =>
               dispatch({
-                type: "ClEAR-FILTER",
+                type: 'ClEAR-FILTER',
               })
             }
             className="flex justify-center w-24 mb-10 rounded-md  font-thin text-sm align-middle bg-white py-2 shadow-md dark:bg-slate-700 text-black dark:text-white  "
           >
-            {" "}
+            {' '}
             <IoIosArrowRoundBack className="mr-2  text-lg  " />
-            Back{" "}
+            Back{' '}
           </button>
         </Link>
         <img src={cyDetails[0]?.flags?.png} alt="" />
@@ -42,36 +39,36 @@ const CountryDetails = () => {
             {cyDetails[0]?.name?.common}
           </h1>
           <h1 className="text-sm font-medium my-3 dark:text-white">
-            Native Name:{" "}
+            Native Name:{' '}
             <small className="font-light text-sm  dark:text-slate-200">
               {
                 cyDetails[0]?.name?.nativeName[
                   Object?.keys(cyDetails[0]?.name?.nativeName)[0]
                 ].common
-              }{" "}
+              }{' '}
             </small>
           </h1>
           <h1 className="text-sm font-medium my-3 dark:text-white">
-            Population:{" "}
+            Population:{' '}
             <small className="font-light text-sm  dark:text-slate-200">
-              {" "}
+              {' '}
               {cyDetails[0]?.population}
             </small>
           </h1>
           <h5 className="text-sm font-medium my-3 dark:text-white">
-            Region:{" "}
+            Region:{' '}
             <small className="font-light text-sm  dark:text-slate-200">
               {cyDetails[0]?.region}
             </small>
           </h5>
           <h1 className="text-sm font-medium my-3 dark:text-white">
-            Sub Region:{" "}
+            Sub Region:{' '}
             <small className="font-light text-sm  dark:text-slate-200">
-              {cyDetails[0]?.subregion}{" "}
+              {cyDetails[0]?.subregion}{' '}
             </small>
           </h1>
           <h1 className="text-sm font-medium my-3 dark:text-white mb-8">
-            Capital:{" "}
+            Capital:{' '}
             <small className="font-light text-sm  dark:text-slate-200">
               {cyDetails[0]?.capital}
             </small>
@@ -79,13 +76,13 @@ const CountryDetails = () => {
         </div>
         <div className="mt-12 ">
           <h1 className="text-sm font-medium my-3 dark:text-white">
-            Top Level Domain:{" "}
+            Top Level Domain:{' '}
             <small className="font-light text-sm  dark:text-slate-200">
               {cyDetails[0]?.tld[0]}
-            </small>{" "}
+            </small>{' '}
           </h1>
           <h1 className="text-sm font-medium my-3 dark:text-white">
-            Currencies:{" "}
+            Currencies:{' '}
             <small className="font-light text-sm  dark:text-slate-200">
               {
                 cyDetails[0]?.currencies[
@@ -95,7 +92,7 @@ const CountryDetails = () => {
             </small>
           </h1>
           <h1 className="text-sm font-medium my-3 dark:text-white">
-            Languages:{" "}
+            Languages:{' '}
             <small className="font-light text-sm  dark:text-slate-200">
               {cyDetails[0]?.languages[Object.keys(cyDetails[0]?.languages)[0]]}
             </small>
@@ -104,7 +101,7 @@ const CountryDetails = () => {
       </div>
       <div className="lg:col-start-2 lg:ml-20 ">
         <h1 className="text-sm font-medium my-5 dark:text-white mb-8  ">
-          Border Countries:{" "}
+          Border Countries:{' '}
           <div className="my-2 grid grid-cols-3 gap-2 mr-3 pl-0 pr-6">
             {cyDetails[0]?.borders ? (
               cyDetails[0]?.borders.map((border) => (
@@ -119,7 +116,7 @@ const CountryDetails = () => {
         </h1>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CountryDetails
+export default CountryDetails;

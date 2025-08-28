@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 
 const Country = ({ country }) => {
   const { name, capital, population, region, flags } = country;
-  console.log('country', country);
   const url = `/country/${capital}`;
   const navigate = useNavigate();
   const handleDetails = () => {
